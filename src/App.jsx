@@ -1,20 +1,24 @@
 import React from 'react'
-import logo from './logo.svg'
 import './App.css'
+import { HashRouter, Route, NavLink, Switch } from 'react-router-dom'
+import favorites from './pages/favorites.jsx'
+import index from './pages/index.jsx'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-          Learn React
-        </a>
-      </header>
-    </div>
+    <HashRouter>
+      <nav>
+        <h1>
+          Galler<span>easy</span>
+        </h1>
+        <NavLink to={'/'}>search</NavLink>
+        <NavLink to={'/favourites'}> favourites </NavLink>
+      </nav>
+      <Switch>
+        <Route path="/favourites" component={favorites} />
+        <Route path="/" component={index} />
+      </Switch>
+    </HashRouter>
   )
 }
 
