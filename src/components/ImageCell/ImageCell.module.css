@@ -1,0 +1,22 @@
+figure.container {
+    width: 22vw;
+    height: 22vw;
+    overflow: hidden;
+    position: relative;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    margin-bottom: 20px;
+    border: 1px solid #eee;
+    display: flex;
+}
+
+img {
+    min-width: 100%;
+    min-height: 100%;
+    /* max-width: 200px; */
+
+    position: absolute;
+    /* text-align: center */
+    /* transform: translate(-50%, -50%); */
+}

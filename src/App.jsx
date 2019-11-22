@@ -2,7 +2,7 @@ import React from 'react'
 import './App.css'
 import { HashRouter, Route, NavLink, Switch } from 'react-router-dom'
 import favorites from './pages/favorites.jsx'
-import index from './pages/index.jsx'
+import index from './pages/index/index.jsx'
 
 function App() {
   return (
