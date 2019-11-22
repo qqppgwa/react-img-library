@@ -1,6 +1,6 @@
 figure.container {
-    width: 22vw;
-    height: 22vw;
+    width: 20%;
+    height: 200px;
     overflow: hidden;
     position: relative;
     /* display: flex;
@@ -19,4 +19,25 @@ img {
     position: absolute;
     /* text-align: center */
     /* transform: translate(-50%, -50%); */
+}
+
+figure div {
+    opacity: 0;
+    width: 25px;
+    height: 25px;
+    background-image: url(../../assets/images/like.png);
+    background-size: cover;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    transition: .3s
+}
+
+.liked {
+    opacity: 1;
+}
+
+figure:hover div:not(.liked) {
+    opacity: .5;
+    transition: .3s
 }

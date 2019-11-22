@@ -9,10 +9,13 @@ class ImageCell extends React.Component {
     let photo = this.props.list.images.fixed_height_downsampled
     // console.log(document.getElementsByClassName('figure')[0])
     return (
-      <figure className={styles.container + ` figure${this.props.index}`}>
-        <img src={this.props.list.images.fixed_height_downsampled.url} alt="" style={{ left: `calc((22vw - ${photo.width}px))` }} />
+      <figure className={styles.container + ` figure${this.props.index}`} onClick={this.liked.bind(this)}>
+        <img src={this.props.list.images.fixed_height_downsampled.url} alt="" />
+        <div className={styles.like}></div>
       </figure>
     )
   }
+  liked() {}
 }
 export default ImageCell
+// style={{ left: `calc((22vw - ${photo.width}px))` }}
