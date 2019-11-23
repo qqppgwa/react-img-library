@@ -3,8 +3,22 @@ nav {
     font-size: 20px;
     align-items: center;
     padding: 20px;
-    margin: 0 30px;
+    margin: 0 10px;
     border-bottom: 1px solid #ccc;
+}
+
+a {
+    color: #ccc;
+    text-decoration: none;
+
+}
+
+a:nth-child(2) {
+    margin-right: 10px;
+}
+
+a.active {
+    color: #4a4a4a
 }
 
 h1 {
@@ -18,4 +32,82 @@ h1 {
 h1 span {
     font-weight: 500;
     color: #4a4a4a;
+}
+
+input {
+    display: block;
+    margin: auto;
+    font-size: 30px;
+    font-weight: 100;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    outline: none;
+    width: 80%;
+    margin: 40px auto 30px auto;
+    line-height: 3;
+    color: #4a4a4a
+}
+
+::-webkit-input-placeholder {
+    /* Edge */
+    font-size: 30px;
+    font-weight: 100;
+    color: #ccc;
+}
+
+:-ms-input-placeholder {
+    /* Internet Explorer */
+    font-size: 30px;
+    font-weight: 100;
+    color: #ccc;
+}
+
+::placeholder {
+    font-size: 30px;
+    font-weight: 100;
+    color: #ccc;
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        color: blue;
+    }
+
+    nav {
+        padding: 1vw;
+        margin: 0 1vw;
+        font-size: 16px;
+    }
+
+    h1 {
+        padding: 0 10px;
+        margin-right: 10px;
+    }
+
+    input {
+        font-size: 22px;
+        /* margin: 1vw; */
+        margin: 15px auto;
+        line-height: 2;
+    }
+
+    ::-webkit-input-placeholder {
+        /* Edge */
+        font-size: 22px;
+        font-weight: 100;
+        color: #ccc;
+    }
+
+    :-ms-input-placeholder {
+        /* Internet Explorer */
+        font-size: 22px;
+        font-weight: 100;
+        color: #ccc;
+    }
+
+    ::placeholder {
+        font-size: 22px;
+        font-weight: 100;
+        color: #ccc;
+    }
 }

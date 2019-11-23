@@ -12,7 +12,7 @@ class ImageCell extends React.Component {
     }
   }
   render() {
-    let photo = this.props.list.images.fixed_height_downsampled
+    // let photo = this.props.list.images.fixed_height_downsampled
     // console.log(document.getElementsByClassName('figure')[0])
     return (
       <figure className={styles.container + ` figure${this.props.index}`} onClick={this.liked.bind(this)}>

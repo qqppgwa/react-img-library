@@ -6,9 +6,15 @@ figure.container {
     /* display: flex;
     justify-content: center;
     align-items: center; */
+    margin-right: 4%;
     margin-bottom: 20px;
     border: 1px solid #eee;
     display: flex;
+
+}
+
+figure.container:nth-child(4n) {
+    margin-right: 0;
 }
 
 img {
@@ -40,4 +46,20 @@ figure div {
 figure:hover div:not(.liked) {
     opacity: .5;
     transition: .3s
+}
+
+@media screen and (max-width: 768px) {
+    figure.container {
+        width: 45vw;
+        height: 45vw;
+        margin-right: 1%;
+    }
+
+    figure.container:nth-child(4n) {
+        margin-right: 1%;
+    }
+
+    figure.container:nth-child(2n) {
+        margin-right: 0;
+    }
 }

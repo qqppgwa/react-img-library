@@ -14,8 +14,10 @@ const App = props => {
         <h1>
           Galler<span>easy</span>
         </h1>
-        <NavLink to={'/'}>search</NavLink>
-        <NavLink to={'/favourites'}>
+        <NavLink exact to={'/'}>
+          search
+        </NavLink>
+        <NavLink exact to={'/favourites'}>
           favourites (<span>{props.likeNum}</span>)
         </NavLink>
       </nav>
