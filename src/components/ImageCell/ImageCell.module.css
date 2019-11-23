@@ -25,6 +25,12 @@ img {
     position: absolute;
     /* text-align: center */
     /* transform: translate(-50%, -50%); */
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: placeHolderShimmer2;
+    animation-timing-function: linear;
+    background: linear-gradient(to right, #f7f7f7 8%, #f1f1f1 38%, #f7f7f7 63%);
 }
 
 figure div {
@@ -61,5 +67,15 @@ figure:hover div:not(.liked) {
 
     figure.container:nth-child(2n) {
         margin-right: 0;
+    }
+}
+
+@keyframes placeHolderShimmer2 {
+    0% {
+        background-position: -150px 0;
+    }
+
+    100% {
+        background-position: 150px 0;
     }
 }
