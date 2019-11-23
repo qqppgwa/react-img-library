@@ -5,18 +5,14 @@ import { connect } from 'react-redux'
 class ImageCell extends React.Component {
   constructor(props) {
     super()
-    // console.log(cookie)
-    console.log(props)
     this.state = {
       islike: this.checkLike(props.list.id)
     }
   }
   render() {
-    // let photo = this.props.list.images.fixed_height_downsampled
-    // console.log(document.getElementsByClassName('figure')[0])
     return (
-      <figure className={styles.container + ` figure${this.props.index}`} onClick={this.liked.bind(this)}>
-        <img src={this.props.list.images.fixed_height_downsampled.url} alt="" />
+      <figure className={styles.container} onClick={this.liked.bind(this)}>
+        <img src={this.props.list.images.fixed_height_downsampled.url} alt={this.props.keyword + ` ${this.props.index + 1}` || `favourite ${this.props.index + 1}`} />
         <div className={this.state.islike ? styles.liked : ''}></div>
       </figure>
     )
@@ -28,25 +24,20 @@ class ImageCell extends React.Component {
     // let likes = this.checkLike(this.props.list.id)
     if (!this.state.islike || likes.length === 0) {
       likes.push(this.props.list.id)
-      cookie.save('likeList', likes, {
-        path: '/',
-        expires
-      })
+
       this.setState({ islike: true })
-      this.props.addLike(likes.length)
+      // this.props.addLike(likes.length)
     } else if (this.state.islike) {
       let index = likes.indexOf(likes.find(e => e === this.props.list.id))
       likes.splice(index, 1)
-      cookie.save('likeList', likes, {
-        path: '/',
-        expires
-      })
+
       this.setState({ islike: false })
-      this.props.addLike(likes.length)
     }
-
-    console.log(cookie.loadAll())
-
+    cookie.save('likeList', likes, {
+      path: '/',
+      expires
+    })
+    this.props.addLike(likes.length)
     // this.props.list.images.id
   }
   checkLike(id) {
@@ -55,15 +46,10 @@ class ImageCell extends React.Component {
     }
   }
 }
-const mapStateToProps = state => {
-  return {
-    name: state.name
-  }
-}
+
 const mapDispatchToProps = dispatch => {
   return {
     addLike: likeNum => {
-      console.log(likeNum)
       return dispatch({
         type: 'ADD_Like',
         payload: {
@@ -74,5 +60,3 @@ const mapDispatchToProps = dispatch => {
   }
 }
 export default connect(null, mapDispatchToProps)(ImageCell)
-
-// style={{ left: `calc((22vw - ${photo.width}px))` }}

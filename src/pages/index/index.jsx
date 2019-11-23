@@ -8,31 +8,30 @@ class SearchPage extends React.Component {
     this.state = {
       keyword: '',
       status: '',
-      list: []
+      list: [],
+      btnDisabled: false
     }
   }
   render() {
-    let s
-    console.log(this.state.list)
+    let content
     if (this.state.status === 'loading') {
-      s = <p>loading</p>
+      content = <p>loading</p>
     } else if (this.state.list.length > 0) {
-      s = []
+      content = []
       for (let i = 0; i < this.state.list.length; i++) {
-        s.push(<ImageCell list={this.state.list[i]} key={i} index={i} />)
+        content.push(<ImageCell list={this.state.list[i]} key={i} index={i} keyword={this.state.keyword} />)
       }
-      console.log(s)
     } else if (this.state.status === 'none') {
-      s = <p>no result</p>
+      content = <p>no result</p>
     } else {
-      s = <p>error</p>
+      content = <p>error</p>
     }
     return (
       <div>
         <InputArea keying={this.keying.bind(this)} changeStatus={this.changeStatus.bind(this)} list={this.list.bind(this)} state={this.state} />
-        <div className="imgList">{this.state.status === '' ? null : s}</div>
-        {this.state.pagination && this.state.pagination.total_count - 8 > 0 && this.state.status === 'showlist' ? (
-          <button className={styles.more} onClick={this.nextPage.bind(this)}>
+        <div className="imgList">{this.state.status === '' ? null : content}</div>
+        {this.state.pagination && this.state.pagination.total_count - (this.state.pagination.offset + 8) > 0 && this.state.status === 'showlist' ? (
+          <button className={styles.more + (this.state.btnDisabled ? ` ${styles.dis}` : '')} onClick={this.nextPage.bind(this)} disabled={this.state.btnDisabled}>
             load more
           </button>
         ) : null}
@@ -43,35 +42,29 @@ class SearchPage extends React.Component {
     this.setState({ keyword: v })
   }
   changeStatus(s) {
+    if (s === 'loading') {
+      this.setState({ list: [] })
+    }
     this.setState({ status: s })
   }
   list(l) {
-    // let list = this.state
-    console.log(this.state)
     this.setState({ list: this.state.list.concat(l.data), pagination: l.pagination })
-    console.log(this.state)
   }
   nextPage() {
+    this.setState({ btnDisabled: true })
     apiSearch({
       query: this.state.keyword,
       limit: '8',
       offset: this.state.pagination.offset + 8
     })
       .then(res => {
-        console.log(res)
-        if (res.data.data.length > 0) {
-          // this.props.changeStatus('showlist')
-          console.log(res.data)
-
-          // this.setState({ status: 'showList' })
-        } else {
-          // this.props.changeStatus('none')
-          // this.setState({ status: 'null' })
-        }
         this.list(res.data)
+        this.setState({ btnDisabled: false })
       })
       .catch(err => {
         console.log(err)
+        this.setState({ btnDisabled: false })
+        alert('error')
         // this.props.changeStatus('error')
         // this.setState({ status: 'error' })
       })
@@ -95,7 +88,6 @@ class InputArea extends React.Component {
         offset: '0'
       })
         .then(res => {
-          console.log(res)
           if (res.data.data.length > 0) {
             this.props.changeStatus('showlist')
 

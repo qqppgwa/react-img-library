@@ -3,11 +3,9 @@ import './App.css'
 import { HashRouter, Route, NavLink, Switch } from 'react-router-dom'
 import favorites from './pages/favorites/favorites.jsx'
 import index from './pages/index/index.jsx'
-import cookie from 'react-cookies'
 import { connect } from 'react-redux'
 
 const App = props => {
-  let num = cookie.load('likeList') ? cookie.load('likeList').length : 0
   return (
     <HashRouter>
       <nav>
@@ -29,7 +27,6 @@ const App = props => {
   )
 }
 const mapStateToProps = ({ likeNum }) => {
-  console.log(likeNum)
   return {
     likeNum: likeNum
   }

@@ -19,14 +19,10 @@ import cookie from 'react-cookies'
 const init = {
     likeNum: cookie.load('likeList') ? cookie.load('likeList').length : 0
 }
-// console.log(document.cookie)
-console.log(cookie.loadAll())
-
 const reducers = (state = init, {
     type,
     payload
 }) => {
-    console.log(type)
     switch (type) {
         case 'ADD_Like':
             return {
