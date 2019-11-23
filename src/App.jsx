@@ -3,8 +3,11 @@ import './App.css'
 import { HashRouter, Route, NavLink, Switch } from 'react-router-dom'
 import favorites from './pages/favorites.jsx'
 import index from './pages/index/index.jsx'
+import cookie from 'react-cookies'
+import { connect } from 'react-redux'
 
-function App() {
+const App = props => {
+  let num = cookie.load('likeList') ? cookie.load('likeList').length : 0
   return (
     <HashRouter>
       <nav>
@@ -12,7 +15,9 @@ function App() {
           Galler<span>easy</span>
         </h1>
         <NavLink to={'/'}>search</NavLink>
-        <NavLink to={'/favourites'}> favourites </NavLink>
+        <NavLink to={'/favourites'}>
+          favourites (<span>{props.likeNum}</span>)
+        </NavLink>
       </nav>
       <Switch>
         <Route path="/favourites" component={favorites} />
@@ -21,5 +26,11 @@ function App() {
     </HashRouter>
   )
 }
-
-export default App
+const mapStateToProps = ({ likeNum }) => {
+  console.log(likeNum)
+  return {
+    likeNum: likeNum
+  }
+}
+//
+export default connect(mapStateToProps, null)(App)
