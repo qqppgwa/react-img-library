@@ -1,0 +1,12 @@
+.imgList {
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: space-around; */
+    padding-left: calc(100% - 92%)
+}
+
+@media screen and (max-width: 768px) {
+    .imgList {
+        padding-left: calc(100% - 96%);
+    }
+}

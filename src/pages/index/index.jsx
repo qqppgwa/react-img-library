@@ -1,7 +1,6 @@
 import React from 'react'
 import ImageCell from '../../components/ImageCell/ImageCell.jsx'
 import { apiSearch } from '../../assets/api'
-import styles from './index.module.css'
 class SearchPage extends React.Component {
   constructor() {
     super()
@@ -30,7 +29,7 @@ class SearchPage extends React.Component {
     return (
       <div>
         <InputArea keying={this.keying.bind(this)} changeStatus={this.changeStatus.bind(this)} list={this.list.bind(this)} state={this.state} />
-        <div className={styles.imgList}>{this.state.status === '' ? null : s}</div>
+        <div className="imgList">{this.state.status === '' ? null : s}</div>
       </div>
     )
   }

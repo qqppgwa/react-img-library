@@ -68,6 +68,15 @@ input {
     color: #ccc;
 }
 
+/* ImageCell container for search page & favorites page */
+.imgList {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 40px;
+    /* justify-content: space-around; */
+    padding-left: calc(100% - 92%)
+}
+
 @media screen and (max-width: 768px) {
     body {
         color: blue;
@@ -109,5 +118,11 @@ input {
         font-size: 22px;
         font-weight: 100;
         color: #ccc;
+    }
+
+    /* ImageCell container for search page & favorites page */
+    .imgList {
+        margin-top: 20px;
+        padding-left: calc(100% - 96%);
     }
 }

@@ -1,7 +1,7 @@
 import React from 'react'
 import './App.css'
 import { HashRouter, Route, NavLink, Switch } from 'react-router-dom'
-import favorites from './pages/favorites.jsx'
+import favorites from './pages/favorites/favorites.jsx'
 import index from './pages/index/index.jsx'
 import cookie from 'react-cookies'
 import { connect } from 'react-redux'
