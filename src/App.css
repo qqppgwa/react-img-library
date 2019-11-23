@@ -48,6 +48,10 @@ input {
     color: #4a4a4a
 }
 
+p {
+    margin: auto
+}
+
 ::-webkit-input-placeholder {
     /* Edge */
     font-size: 30px;
