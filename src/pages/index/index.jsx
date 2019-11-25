@@ -47,9 +47,9 @@ class SearchPage extends React.Component {
     if (s === 'loading') {
       this.setState({ list: [] })
     } else {
-      if (this.state.keyword.trim().length > 0) {
-        this.props.history.push(`?keyword=${this.state.keyword}`)
-      }
+      // if (this.state.keyword.trim().length > 0) {
+      this.props.history.push(`?keyword=${this.state.keyword}`)
+      // }
     }
     this.setState({ status: s })
   }
@@ -91,36 +91,34 @@ class InputArea extends React.Component {
     if (e === this.props.query.keyword) {
       this.props.keying(e)
     } else {
-      this.props.keying(e.target.value)
+      this.props.keying(e.target.value.trim())
     }
   }
   search(e) {
-    if (this.props.state.keyword.trim().length > 0) {
-      if ((e.nativeEvent && e.nativeEvent.keyCode === 13) || e === this.props.query.keyword) {
-        this.props.changeStatus('loading')
-        // this.setState({ status: 'loading' })
-        apiSearch({
-          query: this.props.state.keyword || this.props.query.keyword,
-          limit: '8',
-          offset: '0'
-        })
-          .then(res => {
-            if (res.data.data.length > 0) {
-              this.props.changeStatus('showlist')
+    if ((this.props.state.keyword.length > 0 && e.nativeEvent && e.nativeEvent.keyCode === 13) || e === this.props.query.keyword) {
+      this.props.changeStatus('loading')
+      // this.setState({ status: 'loading' })
+      apiSearch({
+        query: this.props.state.keyword || this.props.query.keyword,
+        limit: '8',
+        offset: '0'
+      })
+        .then(res => {
+          if (res.data.data.length > 0) {
+            this.props.changeStatus('showlist')
 
-              // this.setState({ status: 'showList' })
-            } else {
-              this.props.changeStatus('none')
-              // this.setState({ status: 'null' })
-            }
-            this.props.list(res.data)
-          })
-          .catch(err => {
-            console.log(err)
-            this.props.changeStatus('error')
-            // this.setState({ status: 'error' })
-          })
-      }
+            // this.setState({ status: 'showList' })
+          } else {
+            this.props.changeStatus('none')
+            // this.setState({ status: 'null' })
+          }
+          this.props.list(res.data)
+        })
+        .catch(err => {
+          console.log(err)
+          this.props.changeStatus('error')
+          // this.setState({ status: 'error' })
+        })
     }
   }
 }
