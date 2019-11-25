@@ -10,7 +10,9 @@ const App = props => {
     <HashRouter>
       <nav>
         <h1>
-          Galler<span>easy</span>
+          <a href="/">
+            Galler<span>easy</span>
+          </a>
         </h1>
         <NavLink exact to={'/'}>
           search
