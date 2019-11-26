@@ -6,13 +6,17 @@ import index from './pages/index/index.jsx'
 import { connect } from 'react-redux'
 
 const App = props => {
+  const reload = () => {
+    console.log(window.location.pathname)
+    // location.search = ''
+    window.location.href = window.location.origin + window.location.pathname
+    // window.location.reload()
+  }
   return (
     <HashRouter>
       <nav>
-        <h1>
-          <a href="/">
-            Galler<span>easy</span>
-          </a>
+        <h1 onClick={reload}>
+          Galler<span>easy</span>
         </h1>
         <NavLink exact to={'/'}>
           search

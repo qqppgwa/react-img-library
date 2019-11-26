@@ -27,6 +27,7 @@ h1 {
     margin-right: 30px;
     font-weight: 100;
     color: #555;
+    cursor: pointer;
 }
 
 h1 span {
